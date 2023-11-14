@@ -1,16 +1,16 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from "@playwright/test";
 
-test.use({ userAgent: '' });
+test.use({ userAgent: "" });
 
-test.describe('Guestbook', () => {
-  test.describe('Basic CRUD operations', () => {
-    test('should create a new entry in the guestbook and delete it', async ({
+test.describe("Guestbook", () => {
+  test.describe("Basic CRUD operations", () => {
+    test("should create a new entry in the guestbook and delete it", async ({
       request,
     }) => {
-      const create = await request.post('/api/guestbook', {
+      const create = await request.post("/api/guestbook", {
         data: {
-          username: 'RANDOM_USERNAME',
-          body: 'RANDOM_BODY',
+          username: "RANDOM_USERNAME",
+          body: "RANDOM_BODY",
         },
       });
       const createJson = await create.json();
@@ -18,7 +18,7 @@ test.describe('Guestbook', () => {
       expect(create.status()).toBe(200);
       expect(createJson.id).toBeDefined();
 
-      const del = await request.delete('/api/guestbook', {
+      const del = await request.delete("/api/guestbook", {
         data: {
           id: createJson.id,
         },
