@@ -3,11 +3,13 @@ import { render, waitFor } from "@testing-library/react";
 import Posts from "./index";
 
 test("Postsコンポーネントが正しく表示されること", async () => {
-  // Postsコンポーネントをレンダリングする
-  const { getByText } = render(<Posts />);
+  const screen = render(<Posts />);
+  const postData = [{ id: 1, name: "mswもん", note: "これは投稿" }];
 
-  // "Posts"というテキストが表示されていることを確認する
-  const postsElement = getByText("Posts");
-
-  await waitFor(() => expect(postsElement).toBeInTheDocument());
+  await waitFor(() => {
+    for (const post of postData) {
+      expect(screen.getByText(post.name)).toBeInTheDocument();
+      expect(screen.getByText(post.note)).toBeInTheDocument();
+    }
+  });
 });
