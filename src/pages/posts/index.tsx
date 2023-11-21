@@ -6,10 +6,14 @@ import { Main } from "@/templates/Main";
 const Posts = () => {
   const { data, error } = useGetPosts();
 
-  console.log(data);
   return (
     <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
-      <p>Posts</p>
+      {data?.posts.map((post) => (
+        <div key={post.id}>
+          <p>{post.name}</p>
+          <p>{post.note}</p>
+        </div>
+      ))}
       {error && <p>エラー</p>}
     </Main>
   );

@@ -1,30 +1,14 @@
 import { ResponseBody } from ".";
 import { GetResolver } from "@/services/libs";
 import { FetchError } from "@/types/fetch";
-import { PathParams } from "msw";
-
-// アップデート後の記述
-// export const getPosts: ResponseResolver = () => {
-//   return HttpResponse.json(
-//     {
-//       posts: [
-//         {
-//           id: 1,
-//           name: "mswもん",
-//           note: "これは投稿",
-//         },
-//       ],
-//     },
-//     { status: 200 },
-//   );
+import { PathParams, HttpResponse } from "msw";
 
 export const getPosts: GetResolver<
   PathParams<string>,
   ResponseBody | FetchError
-> = (_, res, ctx) => {
-  return res(
-    ctx.status(200),
-    ctx.json({
+> = () => {
+  return HttpResponse.json(
+    {
       posts: [
         {
           id: 1,
@@ -32,7 +16,8 @@ export const getPosts: GetResolver<
           note: "これは投稿",
         },
       ],
-    }),
+    },
+    { status: 200 },
   );
   // return res(
   //   ctx.status(400),
