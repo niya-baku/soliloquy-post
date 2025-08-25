@@ -56,6 +56,14 @@ const Main = (props: IMainProps) => (
                   posts
                 </Link>
               </li>
+              <li className="mr-6">
+                <Link
+                  href="/jump"
+                  className="border-none text-gray-700 hover:text-gray-900"
+                >
+                  jump
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
