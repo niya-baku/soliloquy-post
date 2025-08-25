@@ -6,6 +6,8 @@ import { Main } from "@/templates/Main";
 const Posts = () => {
   const { data, error } = useGetPosts();
 
+  console.log("data", data);
+
   return (
     <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
       {data?.posts.map((post) => (

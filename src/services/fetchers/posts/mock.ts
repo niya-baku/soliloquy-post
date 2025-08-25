@@ -12,7 +12,7 @@ export const getPosts: GetResolver<
       posts: [
         {
           id: 1,
-          name: "mswもん",
+          name: "mswもんだよー",
           note: "これは投稿",
         },
       ],
